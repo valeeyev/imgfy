@@ -21,7 +21,6 @@ async function getApiKey() {
     }
 
     const apiKey = data.api_key;
-    console.log("API Key:", apiKey);
   } catch (error) {
     console.error("Error fetching API key:", error);
   }
