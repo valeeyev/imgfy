@@ -29,6 +29,11 @@ async function getApiKey() {
     requestHandler = new RequestHandler(apiKey);
 
     searchBtn.addEventListener("click", handleSearch);
+    queryInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        handleSearch();
+      }
+    });
     displaySavedPhotos();
   } catch (error) {
     console.error("Error fetching API key:", error);
@@ -42,6 +47,7 @@ async function handleSearch() {
       const photos = await requestHandler.fetchPhotos(query);
       savePhotosToLocal(photos);
       displayPhotos(photos);
+      console.log(photos);
     } catch (error) {
       console.error("Error fetching photos:", error);
       showAlert("Iltimos keyinroq qayta urinib ko'ring");
